@@ -6,12 +6,15 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:49:57 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/22 17:00:17 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:23:45 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 #include <stdio.h>
 int main()
 {
-	ft_printf("yo\n");
+	int i = ft_printf("%s\n", "hey HEY");
+	printf("%d\n", i);
+	int l = ft_printf("%s\n", NULL);
+	printf("%d\n", l);
 }

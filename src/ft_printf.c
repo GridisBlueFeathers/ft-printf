@@ -6,13 +6,42 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/22 17:00:30 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:25:17 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+
+int	ft_print_char(char c)
+{
+	ft_putchar_fd(c, STDOUT_FILENO);
+	return (1);
+}
+
+int ft_print_string(const char *s)
+{
+	size_t	len;
+
+	if (!s)
+	{
+		ft_putstr_fd("(nil)", STDOUT_FILENO);
+		return (5);
+	}
+	len = ft_strlen(s);
+	write(STDOUT_FILENO, s, len);
+	return (len);
+}
+
+int	ft_format(va_list ap, char f)
+{
+	if (f == 'c')
+		return (ft_print_char(va_arg(ap, int)));
+	if (f == 's')
+		return (ft_print_string(va_arg(ap, char *)));
+	return (-1);
+}
 
 int	ft_printf(const char *fmt, ...)
 {
@@ -27,11 +56,10 @@ int	ft_printf(const char *fmt, ...)
 	va_start(ap, fmt);
 	while (fmt[i])
 	{
-		if (0 && fmt[i + 1] && fmt[i] == '%')
+		if (fmt[i + 1] && fmt[i] == '%')
 		{
-
-			printf("hey\n");
-
+			len += ft_format(ap, fmt[i + 1]);
+			i++;
 		} 
 		else
 		{
@@ -41,5 +69,5 @@ int	ft_printf(const char *fmt, ...)
 		i++;
 	}
 	va_end(ap);
-	return (0);
+	return (len);
 }
