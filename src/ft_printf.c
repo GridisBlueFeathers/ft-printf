@@ -6,33 +6,10 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/22 22:31:15 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 00:00:07 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
-
-int	ft_print_char(char c)
-{
-	ft_putchar_fd(c, STDOUT_FILENO);
-	return (1);
-}
-
-int ft_print_string(const char *s)
-{
-	size_t	len;
-
-	if (!s)
-	{
-		ft_putstr_fd("(nil)", STDOUT_FILENO);
-		return (5);
-	}
-	len = ft_strlen(s);
-	write(STDOUT_FILENO, s, len);
-	return (len);
-}
 
 int	ft_format(va_list ap, char f)
 {
@@ -48,6 +25,7 @@ int	ft_printf(const char *fmt, ...)
 	va_list	ap;
 	size_t	i;
 	size_t	len;
+	ssize_t	bytes_written;
 
 	if (!fmt)
 		return (-1);
@@ -58,15 +36,15 @@ int	ft_printf(const char *fmt, ...)
 	{
 		if (fmt[i + 1] && fmt[i] == '%')
 		{
-			len += ft_format(ap, fmt[i + 1]);
+			bytes_written = ft_format(ap, fmt[i + 1]);
 			i++;
-		} 
-		else
-		{
-			ft_putchar_fd(fmt[i], STDOUT_FILENO);
-			len++;
 		}
+		else
+			bytes_written = ft_print_char(fmt[i]);
 		i++;
+		if (bytes_written == -1)
+			return (bytes_written);
+		len += bytes_written;
 	}
 	va_end(ap);
 	return (len);

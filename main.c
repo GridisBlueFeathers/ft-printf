@@ -6,15 +6,20 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:49:57 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/22 17:23:45 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/22 23:45:34 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include <stdio.h>
+
 int main()
 {
-	int i = ft_printf("%s\n", "hey HEY");
+	char *l = NULL;
+	int i = ft_printf("%s%s\n", "hey HEY", "yo");
 	printf("%d\n", i);
-	int l = ft_printf("%s\n", NULL);
-	printf("%d\n", l);
+	i = ft_printf("%s\n", l);
+	printf("%d\n", i);
+	i = printf("%s%s\n", "hey HEY", "yo");
+	printf("%d\n", i);
+	i = printf("%s\n", l);
+	printf("%d\n", i);
 }

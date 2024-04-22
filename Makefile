@@ -6,7 +6,7 @@
 #    By: svereten <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/22 12:00:15 by svereten          #+#    #+#              #
-#    Updated: 2024/04/22 13:45:20 by svereten         ###   ########.fr        #
+#    Updated: 2024/04/23 00:00:31 by svereten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libftprintf.a
@@ -19,7 +19,9 @@ INCLUDES = -I ./includes/
 
 SRC_DIR = ./src/
 
-SRC_FILES = ft_printf.c
+SRC_FILES = ft_printf.c \
+			ft_print_char.c \
+			ft_print_string.c \
 
 OBJ_FILES = ${SRC_FILES:.c=.o}
 
