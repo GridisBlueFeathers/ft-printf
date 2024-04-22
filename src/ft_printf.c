@@ -6,7 +6,7 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 00:07:46 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 00:10:31 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -28,7 +28,7 @@ int	ft_iterate_print(va_list ap, const char *fmt)
 
 	i = 0;
 	len = 0;
-	while (fmt[i])
+	while (fmt && fmt[i])
 	{
 		if (fmt[i + 1] && fmt[i] == '%')
 		{
