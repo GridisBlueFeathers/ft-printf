@@ -6,7 +6,7 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 00:00:07 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 00:07:46 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -20,18 +20,14 @@ int	ft_format(va_list ap, char f)
 	return (-1);
 }
 
-int	ft_printf(const char *fmt, ...)
+int	ft_iterate_print(va_list ap, const char *fmt)
 {
-	va_list	ap;
-	size_t	i;
 	size_t	len;
+	size_t	i;
 	ssize_t	bytes_written;
 
-	if (!fmt)
-		return (-1);
 	i = 0;
 	len = 0;
-	va_start(ap, fmt);
 	while (fmt[i])
 	{
 		if (fmt[i + 1] && fmt[i] == '%')
@@ -46,6 +42,19 @@ int	ft_printf(const char *fmt, ...)
 			return (bytes_written);
 		len += bytes_written;
 	}
+	return (len);
+}
+
+int	ft_printf(const char *fmt, ...)
+{
+	va_list	ap;
+	size_t	len;
+
+	if (!fmt)
+		return (-1);
+	len = 0;
+	va_start(ap, fmt);
+	len = ft_iterate_print(ap, fmt);
 	va_end(ap);
 	return (len);
 }
