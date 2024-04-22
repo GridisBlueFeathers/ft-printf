@@ -6,7 +6,7 @@
 #    By: svereten <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/22 12:00:15 by svereten          #+#    #+#              #
-#    Updated: 2024/04/22 12:44:08 by svereten         ###   ########.fr        #
+#    Updated: 2024/04/22 13:45:20 by svereten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libftprintf.a
@@ -43,7 +43,7 @@ ${NAME}: ${OBJS} ${LIBFT_AR}
 	${AR} rsc ${NAME} ${OBJS}
 
 ${LIBFT_AR}:
-	${MAKE} ${LIBFT} -C ${LIBFT_DIR}
+	${MAKE} -C ${LIBFT_DIR}
 	cp ${LIBFT_AR} ${NAME}
 
 %.o: %.c

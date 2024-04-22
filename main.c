@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/22 14:13:42 by svereten         ###   ########.fr       */
+/*   Created: 2024/04/22 13:49:57 by svereten          #+#    #+#             */
+/*   Updated: 2024/04/22 13:54:20 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "./includes/ft_printf.h"
 #include <stdio.h>
-
-int	ft_printf(const char *fmt, ...)
+int main()
 {
-	(void)fmt;
-	printf("hey HEY\n");
-	printf("this works right here %s\n", HI);
-	return (0);
+	ft_printf("");
+	printf("%s\n", HI);
 }
