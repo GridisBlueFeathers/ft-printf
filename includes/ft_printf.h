@@ -6,14 +6,14 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:46:03 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/22 13:50:31 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:45:03 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define HI "hello"
+# include <stdio.h>
 
 int	ft_printf(const char *fmt, ...);
 
-#endif // !FT_PRINTF_H
+#endif
