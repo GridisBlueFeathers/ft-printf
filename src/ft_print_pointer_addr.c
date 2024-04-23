@@ -6,16 +6,15 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 14:23:32 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 16:45:18 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:50:18 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-
 int	ft_print_pointer_addr(void *p)
 {
-	ssize_t bytes_written;
-	ssize_t	res;
+	int	bytes_written;
+	int	res;
 
 	if (!p)
 	{

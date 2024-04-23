@@ -6,7 +6,7 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:49:57 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 16:02:06 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:52:35 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -39,5 +39,8 @@ int main()
 	printf("ft len is %d, cl len is %d\n", ft_len, cl_len);
 	ft_len = ft_printf("%x\n", -1123123123);
 	cl_len = printf("%x\n", -1123123123);
+	printf("ft len is %d, cl len is %d\n", ft_len, cl_len);
+	ft_len = ft_printf("%%\n");
+	cl_len = printf("%%\n");
 	printf("ft len is %d, cl len is %d\n", ft_len, cl_len);
 }

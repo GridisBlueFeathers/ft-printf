@@ -6,19 +6,19 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 16:05:26 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 16:45:04 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:51:02 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
 int	ft_print_uhex(unsigned long n, char fmt)
 {
-	int	bytes_written;
-	int	res;
-	char *base;
+	int		bytes_written;
+	int		res;
+	char	*base;
 
 	base = "0123456789abcdef";
-	if (fmt == 'X') 
+	if (fmt == 'X')
 		base = "0123456789ABCDEF";
 	res = 0;
 	if (n < 16)
