@@ -6,10 +6,11 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 15:49:01 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:46:37 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+
 
 static int	ft_format(va_list ap, char f)
 {
@@ -21,6 +22,10 @@ static int	ft_format(va_list ap, char f)
 		return (ft_print_pointer_addr(va_arg(ap, void *)));
 	if (f == 'd' || f == 'i')
 		return (ft_print_int(va_arg(ap, int)));
+	if (f == 'u')
+		return (ft_print_uint(va_arg(ap, unsigned int)));
+	if (f == 'x' || f == 'X')
+		return (ft_print_uhex(va_arg(ap, unsigned int), f));
 	return (-1);
 }
 

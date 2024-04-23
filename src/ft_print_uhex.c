@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_pointer_addr.c                            :+:      :+:    :+:   */
+/*   ft_print_uhex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 14:23:32 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 16:45:18 by svereten         ###   ########.fr       */
+/*   Created: 2024/04/23 16:05:26 by svereten          #+#    #+#             */
+/*   Updated: 2024/04/23 16:45:04 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-
-int	ft_print_pointer_addr(void *p)
+int	ft_print_uhex(unsigned long n, char fmt)
 {
-	ssize_t bytes_written;
-	ssize_t	res;
+	int	bytes_written;
+	int	res;
+	char *base;
 
-	if (!p)
+	base = "0123456789abcdef";
+	if (fmt == 'X') 
+		base = "0123456789ABCDEF";
+	res = 0;
+	if (n < 16)
 	{
-		bytes_written = write(STDOUT_FILENO, "(nil)", 5);
+		bytes_written = ft_print_char(base[n]);
 		return (bytes_written);
 	}
-	res = 0;
-	bytes_written = ft_print_string("0x");
+	bytes_written = ft_print_uhex(n / 16, fmt);
 	if (bytes_written == -1)
 		return (bytes_written);
 	res += bytes_written;
-	bytes_written = ft_print_uhex((unsigned long)p, 'x');
+	bytes_written = ft_print_uhex(n % 16, fmt);
 	if (bytes_written == -1)
 		return (bytes_written);
 	res += bytes_written;

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_pointer_addr.c                            :+:      :+:    :+:   */
+/*   ft_print_uint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 14:23:32 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 16:45:18 by svereten         ###   ########.fr       */
+/*   Created: 2024/04/23 15:59:06 by svereten          #+#    #+#             */
+/*   Updated: 2024/04/23 15:59:29 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-
-int	ft_print_pointer_addr(void *p)
+int	ft_print_uint(unsigned int n)
 {
-	ssize_t bytes_written;
+	ssize_t	bytes_written;
 	ssize_t	res;
 
-	if (!p)
+	res = 0;
+	if (n < 10)
 	{
-		bytes_written = write(STDOUT_FILENO, "(nil)", 5);
+		bytes_written = ft_print_char(n + '0');
 		return (bytes_written);
 	}
-	res = 0;
-	bytes_written = ft_print_string("0x");
+	bytes_written = ft_print_uint(n / 10);
 	if (bytes_written == -1)
 		return (bytes_written);
 	res += bytes_written;
-	bytes_written = ft_print_uhex((unsigned long)p, 'x');
+	bytes_written = ft_print_uint(n % 10);
 	if (bytes_written == -1)
 		return (bytes_written);
 	res += bytes_written;
