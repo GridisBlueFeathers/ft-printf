@@ -6,7 +6,7 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 09:35:14 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:19:09 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -28,33 +28,31 @@ int	ft_calc_num_len_base(long long n, size_t base)
 	return (res);
 }
 
-ssize_t	ft_print_unsigned_num_base(unsigned long n, const char *base)
+ssize_t	ft_print_pointer_value(unsigned long n)
 {
-	size_t	base_len;
 	ssize_t	bytes_written;
 	ssize_t	res;
+	char *base;
 
-	if (!base)
-		return (-1);
-	base_len = ft_strlen(base);
+	base = "0123456789abcdef";
 	res = 0;
-	if (n < base_len)
+	if (n < 16)
 	{
 		bytes_written = ft_print_char(base[n]);
 		return (bytes_written);
 	}
-	bytes_written = ft_print_unsigned_num_base(n / base_len, base);
+	bytes_written = ft_print_pointer_value(n / 16);
 	if (bytes_written == -1)
 		return (bytes_written);
 	res += bytes_written;
-	bytes_written = ft_print_unsigned_num_base(n % base_len, base);
+	bytes_written = ft_print_pointer_value(n % 16);
 	if (bytes_written == -1)
 		return (bytes_written);
 	res += bytes_written;
 	return (res);
 }
 
-int	ft_print_pointer_addr(unsigned long p)
+int	ft_print_pointer_addr(void *p)
 {
 	ssize_t bytes_written;
 	ssize_t	res;
@@ -69,7 +67,7 @@ int	ft_print_pointer_addr(unsigned long p)
 	if (bytes_written == -1)
 		return (bytes_written);
 	res += bytes_written;
-	bytes_written = ft_print_unsigned_num_base(p, "0123456789abcdef");
+	bytes_written = ft_print_pointer_value((unsigned long)p);
 	if (bytes_written == -1)
 		return (bytes_written);
 	res += bytes_written;
@@ -83,7 +81,7 @@ int	ft_format(va_list ap, char f)
 	if (f == 's')
 		return (ft_print_string(va_arg(ap, char *)));
 	if (f == 'p')
-		return (ft_print_pointer_addr(va_arg(ap, unsigned long)));
+		return (ft_print_pointer_addr(va_arg(ap, void *)));
 	return (-1);
 }
 
