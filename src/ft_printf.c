@@ -6,56 +6,10 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 15:40:24 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:49:01 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include <stdio.h>
-
-int	ft_print_int_worker(int n, int mod)
-{
-	ssize_t	bytes_written;
-	ssize_t	res;
-
-	res = 0;
-	if ((mod == -1 && n > -10) || (mod == 1 && n < 10))
-	{
-		bytes_written = ft_print_char((n * mod) + '0');
-		return (bytes_written);
-	}
-	bytes_written = ft_print_int_worker(n / 10, mod);
-	if (bytes_written == -1)
-		return (bytes_written);
-	res += bytes_written;
-	bytes_written = ft_print_int_worker(n % 10, mod);
-	if (bytes_written == -1)
-		return (bytes_written);
-	res += bytes_written;
-	return (res);
-}
-
-int	ft_print_int(int n)
-{
-	ssize_t	res;
-	ssize_t	bytes_written;
-	int		mod;
-
-	mod = 1;
-	res = 0;
-	if (n < 0)
-	{
-		bytes_written = ft_print_char('-');
-		if (bytes_written == -1)
-			return (bytes_written);
-		mod = -1;
-		res += bytes_written;
-	}
-	bytes_written = ft_print_int_worker(n, mod);
-	if (bytes_written == -1)
-		return (bytes_written);
-	res += bytes_written;
-	return (res);
-}
 
 static int	ft_format(va_list ap, char f)
 {
