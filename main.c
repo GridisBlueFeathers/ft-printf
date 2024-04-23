@@ -6,10 +6,11 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:49:57 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 14:21:48 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:46:58 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+#include <limits.h>
 
 int main()
 {
@@ -23,5 +24,14 @@ int main()
 	printf("ft len is %d, cl len is %d\n", ft_len, cl_len);
 	ft_len = ft_printf("%x\n", 100000);
 	cl_len = printf("%x\n", 100000);
+	printf("ft len is %d, cl len is %d\n", ft_len, cl_len);
+	ft_len = ft_printf("%d\n", 100000);
+	cl_len = printf("%d\n", 100000);
+	printf("ft len is %d, cl len is %d\n", ft_len, cl_len);
+	ft_len = ft_printf("%d\n", INT_MIN);
+	cl_len = printf("%d\n", INT_MIN);
+	printf("ft len is %d, cl len is %d\n", ft_len, cl_len);
+	ft_len = ft_printf("%i\n", 100000);
+	cl_len = printf("%i\n", 100000);
 	printf("ft len is %d, cl len is %d\n", ft_len, cl_len);
 }
