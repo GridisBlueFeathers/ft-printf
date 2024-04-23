@@ -6,27 +6,12 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 14:19:09 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:22:30 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 #include <stdio.h>
 #include <unistd.h>
-
-int	ft_calc_num_len_base(long long n, size_t base)
-{
-	int	res;
-
-	res = 1;
-	if (n < 0)
-		res++;
-	while (base && n / base)
-	{
-		res++;
-		n /= base;
-	}
-	return (res);
-}
 
 ssize_t	ft_print_pointer_value(unsigned long n)
 {
