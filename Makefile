@@ -6,7 +6,7 @@
 #    By: svereten <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/22 12:00:15 by svereten          #+#    #+#              #
-#    Updated: 2024/04/23 00:00:31 by svereten         ###   ########.fr        #
+#    Updated: 2024/04/23 14:25:34 by svereten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libftprintf.a
@@ -22,6 +22,7 @@ SRC_DIR = ./src/
 SRC_FILES = ft_printf.c \
 			ft_print_char.c \
 			ft_print_string.c \
+			ft_print_pointer_addr.c \
 
 OBJ_FILES = ${SRC_FILES:.c=.o}
 

@@ -6,60 +6,12 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 14:22:30 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:25:02 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include <stdio.h>
-#include <unistd.h>
 
-ssize_t	ft_print_pointer_value(unsigned long n)
-{
-	ssize_t	bytes_written;
-	ssize_t	res;
-	char *base;
-
-	base = "0123456789abcdef";
-	res = 0;
-	if (n < 16)
-	{
-		bytes_written = ft_print_char(base[n]);
-		return (bytes_written);
-	}
-	bytes_written = ft_print_pointer_value(n / 16);
-	if (bytes_written == -1)
-		return (bytes_written);
-	res += bytes_written;
-	bytes_written = ft_print_pointer_value(n % 16);
-	if (bytes_written == -1)
-		return (bytes_written);
-	res += bytes_written;
-	return (res);
-}
-
-int	ft_print_pointer_addr(void *p)
-{
-	ssize_t bytes_written;
-	ssize_t	res;
-
-	if (!p)
-	{
-		bytes_written = write(STDOUT_FILENO, "(nil)", 5);
-		return (bytes_written);
-	}
-	res = 0;
-	bytes_written = ft_print_string("0x");
-	if (bytes_written == -1)
-		return (bytes_written);
-	res += bytes_written;
-	bytes_written = ft_print_pointer_value((unsigned long)p);
-	if (bytes_written == -1)
-		return (bytes_written);
-	res += bytes_written;
-	return (res);
-}
-
-int	ft_format(va_list ap, char f)
+static int	ft_format(va_list ap, char f)
 {
 	if (f == 'c')
 		return (ft_print_char(va_arg(ap, int)));
@@ -70,8 +22,7 @@ int	ft_format(va_list ap, char f)
 	return (-1);
 }
 
-int	ft_iterate_print(va_list ap, const char *fmt)
-{
+static int	ft_iterate_print(va_list ap, const char *fmt) {
 	size_t	len;
 	size_t	i;
 	ssize_t	bytes_written;
