@@ -6,7 +6,7 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 01:06:11 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/23 09:35:14 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -28,34 +28,52 @@ int	ft_calc_num_len_base(long long n, size_t base)
 	return (res);
 }
 
-void	ft_print_unsigned_num_base(unsigned long n, const char *base)
+ssize_t	ft_print_unsigned_num_base(unsigned long n, const char *base)
 {
 	size_t	base_len;
+	ssize_t	bytes_written;
+	ssize_t	res;
 
 	if (!base)
-		return ;
+		return (-1);
 	base_len = ft_strlen(base);
+	res = 0;
 	if (n < base_len)
 	{
-		ft_print_char(base[n]);
-		return ;
+		bytes_written = ft_print_char(base[n]);
+		return (bytes_written);
 	}
-	ft_print_unsigned_num_base(n / base_len, base);
-	ft_print_unsigned_num_base(n % base_len, base);
+	bytes_written = ft_print_unsigned_num_base(n / base_len, base);
+	if (bytes_written == -1)
+		return (bytes_written);
+	res += bytes_written;
+	bytes_written = ft_print_unsigned_num_base(n % base_len, base);
+	if (bytes_written == -1)
+		return (bytes_written);
+	res += bytes_written;
+	return (res);
 }
 
 int	ft_print_pointer_addr(unsigned long p)
 {
 	ssize_t bytes_written;
+	ssize_t	res;
 
 	if (!p)
 	{
 		bytes_written = write(STDOUT_FILENO, "(nil)", 5);
 		return (bytes_written);
 	}
-	ft_print_string("0x");
-	ft_print_unsigned_num_base(p, "0123456789abcdef");
-	return (ft_calc_num_len_base(p, 16) + 2);
+	res = 0;
+	bytes_written = ft_print_string("0x");
+	if (bytes_written == -1)
+		return (bytes_written);
+	res += bytes_written;
+	bytes_written = ft_print_unsigned_num_base(p, "0123456789abcdef");
+	if (bytes_written == -1)
+		return (bytes_written);
+	res += bytes_written;
+	return (res);
 }
 
 int	ft_format(va_list ap, char f)
