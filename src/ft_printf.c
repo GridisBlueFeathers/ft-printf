@@ -6,7 +6,7 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:54:24 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 16:52:16 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:26:24 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -34,7 +34,7 @@ static int	ft_iterate_print(va_list ap, const char *fmt)
 {
 	size_t	len;
 	size_t	i;
-	ssize_t	bytes_written;
+	int		bytes_written;
 
 	i = 0;
 	len = 0;

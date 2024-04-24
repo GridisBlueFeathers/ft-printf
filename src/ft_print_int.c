@@ -6,15 +6,15 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 15:48:13 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 15:48:43 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:21:59 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
 static int	ft_print_int_worker(int n, int mod)
 {
-	ssize_t	bytes_written;
-	ssize_t	res;
+	int	bytes_written;
+	int	res;
 
 	res = 0;
 	if ((mod == -1 && n > -10) || (mod == 1 && n < 10))
@@ -35,8 +35,8 @@ static int	ft_print_int_worker(int n, int mod)
 
 int	ft_print_int(int n)
 {
-	ssize_t	res;
-	ssize_t	bytes_written;
+	int	res;
+	int	bytes_written;
 	int		mod;
 
 	mod = 1;

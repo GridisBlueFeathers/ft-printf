@@ -6,15 +6,15 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 15:59:06 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/23 15:59:29 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:26:10 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
 int	ft_print_uint(unsigned int n)
 {
-	ssize_t	bytes_written;
-	ssize_t	res;
+	int	bytes_written;
+	int	res;
 
 	res = 0;
 	if (n < 10)
