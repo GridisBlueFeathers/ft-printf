@@ -6,7 +6,7 @@
 #    By: svereten <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/22 12:00:15 by svereten          #+#    #+#              #
-#    Updated: 2024/04/23 16:45:35 by svereten         ###   ########.fr        #
+#    Updated: 2024/04/24 17:33:57 by svereten         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libftprintf.a
@@ -46,11 +46,11 @@ RM = rm -rf
 all: ${NAME}
 
 ${NAME}: ${OBJS} ${LIBFT_AR}
+	cp ${LIBFT_AR} ${NAME}
 	${AR} rsc ${NAME} ${OBJS}
 
 ${LIBFT_AR}:
 	${MAKE} -C ${LIBFT_DIR}
-	cp ${LIBFT_AR} ${NAME}
 
 %.o: %.c
 	${CC} ${CFLAGS} -c ${INCLUDES} $< -o $@
