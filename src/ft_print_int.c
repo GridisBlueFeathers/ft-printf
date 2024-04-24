@@ -6,7 +6,7 @@
 /*   By: svereten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 15:48:13 by svereten          #+#    #+#             */
-/*   Updated: 2024/04/24 17:21:59 by svereten         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:41:08 by svereten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -37,7 +37,7 @@ int	ft_print_int(int n)
 {
 	int	res;
 	int	bytes_written;
-	int		mod;
+	int	mod;
 
 	mod = 1;
 	res = 0;
